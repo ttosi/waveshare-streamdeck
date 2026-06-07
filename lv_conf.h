@@ -1,0 +1,68 @@
+/**
+ * Minimal LVGL v8 configuration for the Waveshare ESP32-S3-Touch-LCD-4.3 UI.
+ */
+#pragma once
+
+#include <stdint.h>
+
+#define LV_COLOR_DEPTH 16
+#define LV_COLOR_16_SWAP 0
+
+#define LV_MEM_CUSTOM 0
+#define LV_MEM_SIZE (64U * 1024U)
+#define LV_MEM_BUF_MAX_NUM 16
+
+#define LV_DISP_DEF_REFR_PERIOD 30
+#define LV_INDEV_DEF_READ_PERIOD 30
+#define LV_TICK_CUSTOM 0
+#define LV_DPI_DEF 130
+
+#define LV_DRAW_COMPLEX 1
+#define LV_SHADOW_CACHE_SIZE 0
+#define LV_CIRCLE_CACHE_SIZE 4
+#define LV_LAYER_SIMPLE_BUF_SIZE (24 * 1024)
+#define LV_LAYER_SIMPLE_FALLBACK_BUF_SIZE (3 * 1024)
+#define LV_IMG_CACHE_DEF_SIZE 0
+
+#define LV_USE_LOG 0
+#define LV_USE_ASSERT_NULL 1
+#define LV_USE_ASSERT_MALLOC 1
+#define LV_USE_ASSERT_STYLE 0
+#define LV_USE_ASSERT_MEM_INTEGRITY 0
+#define LV_USE_ASSERT_OBJ 0
+#define LV_ASSERT_HANDLER_INCLUDE <stdint.h>
+#define LV_ASSERT_HANDLER while (1);
+
+#define LV_USE_USER_DATA 1
+#define LV_USE_PERF_MONITOR 0
+#define LV_USE_MEM_MONITOR 0
+
+#define LV_SPRINTF_CUSTOM 0
+#define LV_USE_THEME_DEFAULT 1
+#define LV_THEME_DEFAULT_DARK 1
+#define LV_THEME_DEFAULT_GROW 1
+#define LV_THEME_DEFAULT_TRANSITION_TIME 80
+
+#define LV_FONT_MONTSERRAT_12 1
+#define LV_FONT_MONTSERRAT_14 1
+#define LV_FONT_MONTSERRAT_16 1
+#define LV_FONT_MONTSERRAT_30 1
+#define LV_FONT_DEFAULT &lv_font_montserrat_14
+#define LV_FONT_FMT_TXT_LARGE 0
+#define LV_USE_FONT_COMPRESSED 0
+
+#define LV_USE_LABEL 1
+#define LV_USE_IMG 1
+#define LV_USE_BTN 1
+#define LV_USE_TILEVIEW 1
+#define LV_USE_OBJX 0
+
+#define LV_USE_ANIMATION 1
+#define LV_USE_GROUP 1
+#define LV_USE_GPU_SDL 0
+#define LV_USE_FILESYSTEM 0
+#define LV_USE_FS_STDIO 0
+#define LV_USE_FS_POSIX 0
+#define LV_USE_FS_WIN32 0
+#define LV_USE_FS_FATFS 0
+#define LV_USE_FS_MEMFS 0
