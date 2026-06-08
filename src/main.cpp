@@ -19,9 +19,9 @@
 #include "USB.h"
 #include "USBHIDKeyboard.h"
 
-#include "app_ui.h"
-#include "lvgl_v8_port.h"
-#include "screen_power.h"
+#include "app/app_ui.h"
+#include "platform/lvgl_v8_port.h"
+#include "services/screen_power.h"
 
 USBCDC USBSerial;
 USBHIDKeyboard Keyboard;

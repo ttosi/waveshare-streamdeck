@@ -1,7 +1,7 @@
-#include "numpad_page.h"
+#include "pages/numpad_page.h"
 
-#include "app_config.h"
-#include "screen_power.h"
+#include "config/app_config.h"
+#include "services/screen_power.h"
 
 struct NumpadKey {
     const char *label;

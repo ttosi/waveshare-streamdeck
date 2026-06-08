@@ -1,9 +1,9 @@
-#include "icon_page.h"
+#include "pages/icon_page.h"
 
-#include "assets.h"
-#include "hid_text.h"
-#include "icon_grid.h"
-#include "screen_power.h"
+#include "assets/assets.h"
+#include "services/hid_text.h"
+#include "services/screen_power.h"
+#include "ui/icon_grid.h"
 
 static void send_test_event_cb(lv_event_t *event)
 {

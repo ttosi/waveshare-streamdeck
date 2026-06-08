@@ -1,7 +1,7 @@
-#include "ui_common.h"
+#include "ui/ui_common.h"
 
-#include "app_config.h"
-#include "screen_power.h"
+#include "config/app_config.h"
+#include "services/screen_power.h"
 
 void configure_page(lv_obj_t *page)
 {

@@ -3,6 +3,9 @@
  */
 #pragma once
 
+#ifndef LV_CONF_H
+#define LV_CONF_H
+
 #include <stdint.h>
 
 #define LV_COLOR_DEPTH 16
@@ -66,3 +69,5 @@
 #define LV_USE_FS_WIN32 0
 #define LV_USE_FS_FATFS 0
 #define LV_USE_FS_MEMFS 0
+
+#endif // LV_CONF_H

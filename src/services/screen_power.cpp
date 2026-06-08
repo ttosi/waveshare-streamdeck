@@ -1,6 +1,6 @@
-#include "screen_power.h"
+#include "services/screen_power.h"
 
-#include "app_config.h"
+#include "config/app_config.h"
 
 static esp_panel::drivers::Backlight *screen_backlight;
 static uint32_t last_touch_ms;

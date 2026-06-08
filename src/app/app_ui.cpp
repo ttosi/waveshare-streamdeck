@@ -1,12 +1,12 @@
-#include "app_ui.h"
+#include "app/app_ui.h"
 
 #include <lvgl.h>
 
-#include "app_config.h"
-#include "icon_page.h"
-#include "numpad_page.h"
-#include "screen_power.h"
-#include "ui_common.h"
+#include "config/app_config.h"
+#include "pages/icon_page.h"
+#include "pages/numpad_page.h"
+#include "services/screen_power.h"
+#include "ui/ui_common.h"
 
 using PageBuilder = void (*)(lv_obj_t *page, USBHIDKeyboard *keyboard);
 

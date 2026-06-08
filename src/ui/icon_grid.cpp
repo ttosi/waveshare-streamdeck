@@ -1,4 +1,4 @@
-#include "icon_grid.h"
+#include "ui/icon_grid.h"
 
 void create_icon_grid(
     lv_obj_t *page, const IconGridItem *items, size_t item_count, const IconGridConfig &config
