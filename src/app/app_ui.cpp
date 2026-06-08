@@ -3,8 +3,7 @@
 #include <lvgl.h>
 
 #include "config/app_config.h"
-#include "pages/icon_page.h"
-#include "pages/numpad_page.h"
+#include "pages/blender_page.h"
 #include "services/screen_power.h"
 #include "ui/ui_common.h"
 
@@ -14,20 +13,14 @@ struct PageDefinition {
     PageBuilder build;
 };
 
-static void build_icon_page(lv_obj_t *page, USBHIDKeyboard *keyboard)
+static void build_blender_page(lv_obj_t *page, USBHIDKeyboard *keyboard)
 {
-    create_icon_page(page, keyboard);
-}
-
-static void build_numpad_page(lv_obj_t *page, USBHIDKeyboard *keyboard)
-{
-    create_numpad_page(page, keyboard);
+    create_blender_page(page, keyboard);
 }
 
 // Add new page builders here. Navigation directions are calculated automatically.
 static const PageDefinition pages[] = {
-    {build_icon_page},
-    {build_numpad_page},
+    {build_blender_page},
 };
 
 static lv_dir_t get_page_directions(size_t page_index, size_t page_count)

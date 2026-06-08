@@ -50,6 +50,25 @@ Upload files from `data` to LittleFS separately from the firmware:
 ~/.platformio/penv/bin/pio run -t uploadfs
 ```
 
+## Button Actions
+
+Button actions are pipe-separated steps:
+
+```text
+combo:KEY_LEFT_SHIFT+a|type:cube|enter
+```
+
+Supported steps:
+
+- `type:text`: type text exactly, including characters such as `$` and `#`.
+- `key:KEY_KP_1`: press and release one named key.
+- `press:KEY_KP_1`: alias for `key:`.
+- `combo:KEY_LEFT_SHIFT+a`: press keys together, then release all.
+- `delay:150`: wait milliseconds before the next step.
+- `enter`: alias for `key:KEY_RETURN`.
+
+Common key names include `KEY_RETURN`, `KEY_TAB`, `KEY_ESC`, `KEY_SPACE`, `KEY_LEFT_SHIFT`, `KEY_LEFT_CTRL`, `KEY_LEFT_ALT`, `KEY_F1` through `KEY_F24`, and `KEY_KP_0` through `KEY_KP_9`.
+
 ## Build
 
 ```bash

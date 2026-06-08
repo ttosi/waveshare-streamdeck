@@ -1,0 +1,16 @@
+page,position,icon,action
+blender,0,icons/blender/viewport_x.bin,key:KEY_KP_3
+blender,1,icons/blender/grab_x.bin,key:g|key:x
+blender,2,icons/blender/resize_x.bin,key:s|key:x
+blender,3,icons/blender/add_cube.bin,combo:KEY_LEFT_SHIFT+a|type:cube|enter
+blender,4,icons/blender/cursor_to_origin.bin,combo:KEY_LEFT_SHIFT+s|type:1
+blender,5,icons/blender/viewport_y.bin,key:KEY_KP_1
+blender,6,icons/blender/grab_y.bin,key:g|key:y
+blender,7,icons/blender/resize_y.bin,key:s|key:y
+blender,8,icons/blender/add_cylinder.bin,combo:KEY_LEFT_SHIFT+a|type:cylinder|enter
+blender,9,icons/blender/cursor_to_selection.bin,combo:KEY_LEFT_SHIFT+s|type:2
+blender,10,icons/blender/viewport_z.bin,key:KEY_KP_7
+blender,11,icons/blender/grab_z.bin,key:g|key:z
+blender,12,icons/blender/resize_z.bin,key:s|key:z
+blender,13,icons/blender/add_plane.bin,combo:KEY_LEFT_SHIFT+a|type:plane|enter
+blender,14,icons/blender/selection_to_cursor.bin,combo:KEY_LEFT_SHIFT+s|type:8
