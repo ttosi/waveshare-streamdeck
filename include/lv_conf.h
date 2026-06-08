@@ -64,7 +64,9 @@
 #define LV_USE_GROUP 1
 #define LV_USE_GPU_SDL 0
 #define LV_USE_FILESYSTEM 0
-#define LV_USE_FS_STDIO 0
+#define LV_USE_FS_STDIO 1
+#define LV_FS_STDIO_LETTER 'A'
+#define LV_FS_STDIO_PATH "/littlefs"
 #define LV_USE_FS_POSIX 0
 #define LV_USE_FS_WIN32 0
 #define LV_USE_FS_FATFS 0

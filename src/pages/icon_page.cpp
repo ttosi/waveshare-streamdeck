@@ -1,6 +1,5 @@
 #include "pages/icon_page.h"
 
-#include "assets/assets.h"
 #include "services/hid_text.h"
 #include "services/screen_power.h"
 #include "ui/icon_grid.h"
@@ -19,7 +18,7 @@ static void send_test_event_cb(lv_event_t *event)
 void create_icon_page(lv_obj_t *page, USBHIDKeyboard *keyboard)
 {
     const IconGridItem icons[] = {
-        {&icon_axis_side, send_test_event_cb, keyboard},
+        {"A:/icons/g1.bin", send_test_event_cb, keyboard},
     };
     static const IconGridConfig grid = {1, 96, 96, 0, 0};
 

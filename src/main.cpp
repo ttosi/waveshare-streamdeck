@@ -15,6 +15,7 @@
 #endif
 
 #include <esp_display_panel.hpp>
+#include <LittleFS.h>
 #include <lvgl.h>
 #include "USB.h"
 #include "USBHIDKeyboard.h"
@@ -43,6 +44,10 @@ void setup()
     USB.begin();
 
     USBSerial.println("Starting display...");
+
+    if (!LittleFS.begin(false)) {
+        USBSerial.println("Failed to mount LittleFS.");
+    }
 
     lvgl_port_init(panel->getLcd(), panel->getTouch());
 
