@@ -39,7 +39,6 @@ void setup()
 
     // Start TinyUSB only after GPIO19/GPIO20 are routed to the USB connector.
     USBSerial.begin();
-    Keyboard.setShiftKeyReports(true);
     Keyboard.begin();
     USB.begin();
 

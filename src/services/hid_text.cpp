@@ -2,7 +2,7 @@
 
 #include <Arduino.h>
 
-static constexpr uint32_t KEY_DELAY_MS = 8;
+static constexpr uint32_t KEY_DELAY_MS = 15;
 
 void send_hid_text(USBHIDKeyboard *keyboard, const char *text)
 {
