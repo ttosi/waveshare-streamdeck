@@ -1,5 +1,7 @@
 #include "ui/icon_grid.h"
 
+#include "services/image_assets.h"
+
 void create_icon_grid(
     lv_obj_t *page, const IconGridItem *items, size_t item_count, const IconGridConfig &config
 )
@@ -14,6 +16,10 @@ void create_icon_grid(
     const int16_t grid_height = rows * config.cell_height + (rows - 1) * config.row_gap;
 
     for (size_t index = 0; index < item_count; index++) {
+        if (items[index].image == nullptr || items[index].image[0] == '\0') {
+            continue;
+        }
+
         const int16_t column = index % config.columns;
         const int16_t row = index / config.columns;
         const int16_t x =
@@ -22,7 +28,8 @@ void create_icon_grid(
             row * (config.cell_height + config.row_gap) + config.cell_height / 2 - grid_height / 2;
 
         lv_obj_t *icon = lv_img_create(page);
-        lv_img_set_src(icon, items[index].image);
+        const lv_img_dsc_t *image = load_image_asset(items[index].image);
+        lv_img_set_src(icon, image != nullptr ? static_cast<const void *>(image) : items[index].image);
         lv_obj_align(icon, LV_ALIGN_CENTER, x, y);
 
         if (items[index].event_cb != nullptr) {

@@ -49,7 +49,12 @@ void create_blender_page(lv_obj_t *page, USBHIDKeyboard *keyboard)
     IconGridItem icons[sizeof(buttons) / sizeof(buttons[0])];
     for (size_t index = 0; index < sizeof(buttons) / sizeof(buttons[0]); index++) {
         buttons[index].keyboard = keyboard;
-        icons[index] = {buttons[index].icon, blender_button_event_cb, &buttons[index]};
+        const bool has_action = buttons[index].action != nullptr && buttons[index].action[0] != '\0';
+        icons[index] = {
+            buttons[index].icon,
+            has_action ? blender_button_event_cb : nullptr,
+            has_action ? &buttons[index] : nullptr,
+        };
     }
 
     static const IconGridConfig grid = {

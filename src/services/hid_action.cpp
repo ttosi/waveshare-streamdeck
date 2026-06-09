@@ -3,6 +3,7 @@
 #include <Arduino.h>
 #include <ctype.h>
 
+#include "config/secrets.h"
 #include "services/hid_text.h"
 
 namespace {
@@ -194,6 +195,14 @@ bool execute_step(USBHIDKeyboard *keyboard, String step)
     if (command.equalsIgnoreCase("type") || command.equalsIgnoreCase("text")) {
         send_hid_text(keyboard, value.c_str());
         return true;
+    }
+    if (command.equalsIgnoreCase("secret")) {
+        value.trim();
+        if (value.equalsIgnoreCase("LOGIN_PASSWORD")) {
+            send_hid_text(keyboard, secrets::LOGIN_PASSWORD);
+            return true;
+        }
+        return false;
     }
     if (command.equalsIgnoreCase("key") || command.equalsIgnoreCase("press")) {
         return execute_key(keyboard, value);

@@ -73,7 +73,10 @@ def main() -> None:
     parser.add_argument("destination", type=Path, help="Directory for generated .bin files")
     args = parser.parse_args()
 
-    sources = sorted(path for path in args.source.iterdir() if path.is_file())
+    sources = sorted(
+        path for path in args.source.iterdir()
+        if path.is_file() and path.suffix.lower() == ".png"
+    )
     if not sources:
         raise SystemExit(f"No files found in {args.source}")
 

@@ -1,0 +1,16 @@
+page,position,icon,action
+inkscape,0,icons/inkscape/align_center_vert.bin,combo:KEY_LEFT_CTRL+KEY_LEFT_ALT+7
+inkscape,1,icons/inkscape/dialog_export.bin,combo:KEY_LEFT_CTRL+KEY_LEFT_SHIFT+E
+inkscape,2,icons/inkscape/dialog_history.bin,combo:KEY_LEFT_CTRL+KEY_LEFT_SHIFT+H
+inkscape,3,icons/inkscape/rectangle.bin,key:r
+inkscape,4,icons/inkscape/dialog_layers.bin,combo:KEY_LEFT_CTRL+KEY_LEFT_SHIFT+L
+inkscape,5,icons/inkscape/align_center_hort.bin,combo:KEY_LEFT_CTRL+KEY_LEFT_ALT+1
+inkscape,6,icons/inkscape/dialog_fill_and_stroke.bin,combo:KEY_LEFT_CTRL+KEY_LEFT_SHIFT+F
+inkscape,7,icons/inkscape/dialog_object_properties.bin,combo:KEY_LEFT_CTRL+KEY_LEFT_SHIFT+O
+inkscape,8,icons/inkscape/ellipse.bin,key:e
+inkscape,9,icons/inkscape/raise_layer.bin,combo:KEY_LEFT_CTRL+KEY_LEFT_SHIFT+KEY_PAGE_UP
+inkscape,10,icons/inkscape/dialog_align.bin,combo:KEY_LEFT_CTRL+KEY_LEFT_SHIFT+A
+inkscape,11,icons/inkscape/pages_setup.bin,combo:KEY_LEFT_CTRL+KEY_LEFT_SHIFT+P
+inkscape,12,icons/inkscape/dialog_import.bin,combo:KEY_LEFT_CTRL+I
+inkscape,13,icons/inkscape/3d_object.bin,combo:KEY_LEFT_SHIFT+KEY_F4
+inkscape,14,icons/inkscape/lower_layer.bin,combo:KEY_LEFT_CTRL+KEY_LEFT_SHIFT+KEY_PAGE_DOWN

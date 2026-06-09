@@ -36,6 +36,17 @@ Place LVGL `.bin` files in `data/icons`. Use `RGB565A8` for icons with transpare
 
 For pages with many icons, declare a local `IconGridItem icons[]` in that page module. `IconGridConfig` controls columns, cell size, and gaps; up to 15 icon buttons fits naturally as a 5x3 or 3x5 grid.
 
+Keep all 15 CSV rows to preserve the 5x3 layout. For an empty, non-clickable slot, leave both `icon` and `action` empty:
+
+```csv
+page,position,icon,action
+inkscape,0,icons/inkscape/rectangle.bin,key:r
+inkscape,1,,
+inkscape,2,icons/inkscape/ellipse.bin,key:e
+```
+
+Use empty fields rather than the literal text `null`.
+
 Convert a directory of PNG icons to LVGL v8 `RGB565A8` binary files with:
 
 ```bash
@@ -65,9 +76,16 @@ Supported steps:
 - `press:KEY_KP_1`: alias for `key:`.
 - `combo:KEY_LEFT_SHIFT+a`: press keys together, then release all.
 - `delay:150`: wait milliseconds before the next step.
+- `secret:LOGIN_PASSWORD`: type the password stored in ignored `include/config/secrets.h`.
 - `enter`: alias for `key:KEY_RETURN`.
 
 Common key names include `KEY_RETURN`, `KEY_TAB`, `KEY_ESC`, `KEY_SPACE`, `KEY_LEFT_SHIFT`, `KEY_LEFT_CTRL`, `KEY_LEFT_ALT`, `KEY_F1` through `KEY_F24`, and `KEY_KP_0` through `KEY_KP_9`.
+
+Example lock-screen login action:
+
+```text
+key:KEY_SPACE|delay:500|key:KEY_DELETE|secret:LOGIN_PASSWORD|enter
+```
 
 ## Build
 

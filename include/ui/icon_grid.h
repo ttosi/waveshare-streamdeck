@@ -3,7 +3,7 @@
 #include <lvgl.h>
 
 struct IconGridItem {
-    const void *image;
+    const char *image;
     lv_event_cb_t event_cb = nullptr;
     void *user_data = nullptr;
 };

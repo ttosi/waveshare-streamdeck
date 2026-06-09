@@ -4,6 +4,8 @@
 
 #include "config/app_config.h"
 #include "pages/blender_page.h"
+#include "pages/inkscape_page.h"
+#include "pages/system_page.h"
 #include "services/screen_power.h"
 #include "ui/ui_common.h"
 
@@ -18,9 +20,21 @@ static void build_blender_page(lv_obj_t *page, USBHIDKeyboard *keyboard)
     create_blender_page(page, keyboard);
 }
 
+static void build_system_page(lv_obj_t *page, USBHIDKeyboard *keyboard)
+{
+    create_system_page(page, keyboard);
+}
+
+static void build_inkscape_page(lv_obj_t *page, USBHIDKeyboard *keyboard)
+{
+    create_inkscape_page(page, keyboard);
+}
+
 // Add new page builders here. Navigation directions are calculated automatically.
 static const PageDefinition pages[] = {
+    {build_system_page},
     {build_blender_page},
+    {build_inkscape_page},
 };
 
 static lv_dir_t get_page_directions(size_t page_index, size_t page_count)

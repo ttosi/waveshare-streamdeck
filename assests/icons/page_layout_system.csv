@@ -1,0 +1,16 @@
+page,position,icon,action
+system,0,icons/system/login.bin,key:KEY_SPACE|delay:500|key:KEY_DELETE|secret:LOGIN_PASSWORD|enter
+system,1,icons/system/restart.bin,key:KEY_LEFT_GUI|delay:250|type:restart|enter
+system,2,,
+system,3,,
+system,4,,
+system,5,icons/system/logout.bin,key:KEY_LEFT_GUI|delay:250|type:logout|enter
+system,6,icons/system/power_off.bin,key:KEY_LEFT_GUI|delay:250|type:power off|enter
+system,7,,
+system,8,,
+system,9,,
+system,10,icons/system/lock.bin,key:KEY_LEFT_GUI|delay:250|type:lock screen|enter
+system,11,,
+system,12,,
+system,13,,
+system,14,,
