@@ -23,6 +23,7 @@
 #include "app/app_ui.h"
 #include "platform/lvgl_v8_port.h"
 #include "services/screen_power.h"
+#include "services/weather_service.h"
 
 USBCDC USBSerial;
 USBHIDKeyboard Keyboard;
@@ -55,6 +56,7 @@ void setup()
         lvgl_port_unlock();
     }
 
+    weather_service_start();
     USBSerial.println("Stream deck ready.");
 }
 
