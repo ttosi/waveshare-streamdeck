@@ -59,6 +59,7 @@ bool fetch_weather()
     url += "&longitude=";
     url += String(weather_config::LONGITUDE, 7);
     url += "&current=temperature_2m,relative_humidity_2m,dew_point_2m,weather_code,is_day";
+    url += "&hourly=temperature_2m&forecast_hours=12";
     url += "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max";
     url += "&temperature_unit=fahrenheit&timezone=America%2FChicago&forecast_days=4";
 
@@ -128,6 +129,9 @@ bool fetch_weather()
             document["daily"]["precipitation_probability_max"][index] | 0;
         next.days[index].high = document["daily"]["temperature_2m_max"][index] | 0.0F;
         next.days[index].low = document["daily"]["temperature_2m_min"][index] | 0.0F;
+    }
+    for (size_t index = 0; index < weather_config::HOURLY_POINT_COUNT; index++) {
+        next.hourly_temperatures[index] = document["hourly"]["temperature_2m"][index] | next.temperature;
     }
 
     if (xSemaphoreTake(snapshot_mutex, pdMS_TO_TICKS(100)) == pdTRUE) {

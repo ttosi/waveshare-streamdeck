@@ -58,6 +58,7 @@
 #define LV_USE_LABEL 1
 #define LV_USE_IMG 1
 #define LV_USE_BTN 1
+#define LV_USE_CHART 1
 #define LV_USE_TILEVIEW 1
 #define LV_USE_OBJX 0
 

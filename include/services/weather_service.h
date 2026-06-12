@@ -23,6 +23,7 @@ struct WeatherSnapshot {
     float dew_point;
     int weather_code;
     WeatherDay days[weather_config::FORECAST_DAY_COUNT];
+    float hourly_temperatures[weather_config::HOURLY_POINT_COUNT];
 };
 
 void weather_service_start();
