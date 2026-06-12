@@ -23,12 +23,23 @@ lv_obj_t *date_bold_label;
 lv_obj_t *status_label;
 lv_obj_t *current_icon;
 lv_obj_t *temperature_label;
-lv_obj_t *condition_label;
-lv_obj_t *details_label;
+lv_obj_t *high_low_label;
+lv_obj_t *humidity_label;
+lv_obj_t *dew_point_label;
+lv_obj_t *wind_label;
 lv_obj_t *temperature_chart;
 lv_obj_t *chart_range_label;
 lv_chart_series_t *temperature_series;
 ForecastWidgets forecast[weather_config::FORECAST_DAY_COUNT];
+
+const char *wind_direction_name(int degrees)
+{
+    static const char *directions[] = {
+        "N", "NE", "E", "SE", "S", "SW", "W", "NW"
+    };
+    const int normalized = ((degrees % 360) + 360) % 360;
+    return directions[(normalized + 22) / 45 % 8];
+}
 
 void set_text_color(lv_obj_t *object, uint32_t color)
 {
@@ -137,6 +148,7 @@ void refresh_page(lv_timer_t *)
     const int low = lroundf(snapshot.days[0].low);
     const int humidity = lroundf(snapshot.humidity);
     const int dew_point = lroundf(snapshot.dew_point);
+    const int wind_speed = lroundf(snapshot.wind_speed);
     lv_label_set_text(
         status_label,
         snapshot.connected
@@ -146,12 +158,14 @@ void refresh_page(lv_timer_t *)
     update_icon(current_icon, weather_icon_path(snapshot.weather_code, snapshot.is_day));
     lv_snprintf(buffer, sizeof(buffer), "%d°", temperature);
     lv_label_set_text(temperature_label, buffer);
-    lv_label_set_text(condition_label, weather_condition_name(snapshot.weather_code));
-    lv_snprintf(
-        buffer, sizeof(buffer), "H %d°  L %d°     Humidity %d%%  Dew %d°",
-        high, low, humidity, dew_point
-    );
-    lv_label_set_text(details_label, buffer);
+    lv_snprintf(buffer, sizeof(buffer), "H %d°   L %d°", high, low);
+    lv_label_set_text(high_low_label, buffer);
+    lv_snprintf(buffer, sizeof(buffer), "RH %d%%", humidity);
+    lv_label_set_text(humidity_label, buffer);
+    lv_snprintf(buffer, sizeof(buffer), "DP %d°", dew_point);
+    lv_label_set_text(dew_point_label, buffer);
+    lv_snprintf(buffer, sizeof(buffer), "Wind %s %d mph", wind_direction_name(snapshot.wind_direction), wind_speed);
+    lv_label_set_text(wind_label, buffer);
 
     int chart_min = 200;
     int chart_max = -200;
@@ -211,19 +225,29 @@ void create_weather_page(lv_obj_t *page)
     lv_obj_align(current_card, LV_ALIGN_TOP_LEFT, 28, 92);
 
     current_icon = lv_img_create(current_card);
-    lv_obj_align(current_icon, LV_ALIGN_LEFT_MID, 4, -18);
+    lv_obj_align(current_icon, LV_ALIGN_BOTTOM_LEFT, 37, -5);
 
     temperature_label = create_label(current_card, &lv_font_montserrat_48, app_config::COLOR_TEXT);
-    lv_obj_align(temperature_label, LV_ALIGN_LEFT_MID, 92, -31);
+    lv_obj_set_width(temperature_label, 150);
+    lv_obj_set_style_text_align(temperature_label, LV_TEXT_ALIGN_CENTER, 0);
+    lv_obj_align(temperature_label, LV_ALIGN_TOP_LEFT, 1, 2);
     lv_label_set_text(temperature_label, "--°");
 
-    condition_label = create_label(current_card, &lv_font_montserrat_16, app_config::COLOR_TEXT);
-    lv_obj_align(condition_label, LV_ALIGN_LEFT_MID, 96, 24);
-    lv_label_set_text(condition_label, "Waiting for weather...");
+    high_low_label = create_label(current_card, &lv_font_montserrat_16, app_config::COLOR_TEXT);
+    lv_obj_align(high_low_label, LV_ALIGN_TOP_LEFT, 174, 16);
+    lv_label_set_text(high_low_label, "H --°   L --°");
 
-    details_label = create_label(current_card, &lv_font_montserrat_16, 0xAEB6C4);
-    lv_obj_align(details_label, LV_ALIGN_BOTTOM_LEFT, 8, -7);
-    lv_label_set_text(details_label, "H --°  L --°   Hum --%  Dew --°");
+    humidity_label = create_label(current_card, &lv_font_montserrat_16, 0xAEB6C4);
+    lv_obj_align(humidity_label, LV_ALIGN_TOP_LEFT, 174, 49);
+    lv_label_set_text(humidity_label, "RH --%");
+
+    dew_point_label = create_label(current_card, &lv_font_montserrat_16, 0xAEB6C4);
+    lv_obj_align(dew_point_label, LV_ALIGN_TOP_LEFT, 174, 82);
+    lv_label_set_text(dew_point_label, "DP --°");
+
+    wind_label = create_label(current_card, &lv_font_montserrat_14, 0xAEB6C4);
+    lv_obj_align(wind_label, LV_ALIGN_TOP_LEFT, 174, 116);
+    lv_label_set_text(wind_label, "Wind -- -- mph");
 
     lv_obj_t *chart_card = create_card(page);
     lv_obj_set_size(chart_card, 364, 172);

@@ -58,7 +58,7 @@ bool fetch_weather()
     url += String(weather_config::LATITUDE, 7);
     url += "&longitude=";
     url += String(weather_config::LONGITUDE, 7);
-    url += "&current=temperature_2m,relative_humidity_2m,dew_point_2m,weather_code,is_day";
+    url += "&current=temperature_2m,relative_humidity_2m,dew_point_2m,weather_code,is_day,wind_speed_10m,wind_direction_10m";
     url += "&hourly=temperature_2m&forecast_hours=12";
     url += "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max";
     url += "&temperature_unit=fahrenheit&timezone=America%2FChicago&forecast_days=4";
@@ -118,6 +118,8 @@ bool fetch_weather()
     next.temperature = document["current"]["temperature_2m"] | 0.0F;
     next.humidity = document["current"]["relative_humidity_2m"] | 0.0F;
     next.dew_point = document["current"]["dew_point_2m"] | 0.0F;
+    next.wind_speed = document["current"]["wind_speed_10m"] | 0.0F;
+    next.wind_direction = document["current"]["wind_direction_10m"] | 0;
     next.weather_code = document["current"]["weather_code"] | 0;
     next.is_day = (document["current"]["is_day"] | 1) != 0;
 

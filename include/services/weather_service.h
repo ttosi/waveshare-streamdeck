@@ -21,6 +21,8 @@ struct WeatherSnapshot {
     float temperature;
     float humidity;
     float dew_point;
+    float wind_speed;
+    int wind_direction;
     int weather_code;
     WeatherDay days[weather_config::FORECAST_DAY_COUNT];
     float hourly_temperatures[weather_config::HOURLY_POINT_COUNT];
